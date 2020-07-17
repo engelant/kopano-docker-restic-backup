@@ -1,0 +1,10 @@
+#!/bin/bash
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/settings"
+
+for dir in data config .cache; do
+    if [[ ! -d "$BACKUP_DIR/$dir" ]]; then
+        mkdir "$BACKUP_DIR/$dir"
+    fi
+done
+
+docker run --rm --env-file "$BACKUP_DIR/restic.env" -v "$BACKUP_DIR/.cache":/root/.cache/restic -v "$BACKUP_DIR":/kopano:ro instrumentisto/restic $@

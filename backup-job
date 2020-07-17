@@ -1,0 +1,12 @@
+#!/bin/bash
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/settings"
+
+cd "$KOPANO_DOCKER_DIR"
+for file in $(git ls-files -o); do
+	cp -rf "$file" "$BACKUP_DIR/config/$file"
+done
+
+docker run --rm -it --volumes-from kopano_server -v "$BACKUP_DIR":/kopano/backup zokradonh/kopano_utils kopano-backup -O /kopano/backup/data
+
+"$BACKUP_DIR/restic" backup /kopano/data /kopano/config
+"$BACKUP_DIR/restic" forget "$RESTIC_RETENTION"
