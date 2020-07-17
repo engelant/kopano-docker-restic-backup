@@ -32,7 +32,7 @@ cp cron.d/restic-kopano /etc/cron.d/
 ```
 
 ## Check backups / interact with restic
-The *./restic* command provides a wrapper for 
+The *./restic* command provides a wrapper for the restic binary inside the [instrumentisto/restic](https://github.com/instrumentisto/restic-docker-image) Docker image, with the environment variables set to access the backup. Just user the [restic documentation](https://restic.readthedocs.io/en/latest/index.html) for reference.
 
 ## Cloud storage
 I __suggest__ the [Backblaze B2 Storage](https://www.backblaze.com/b2/cloud-storage.html), for that they have a free 10GB Tier and are pretty cheap. But also be aware to:
