@@ -9,5 +9,5 @@ done
 
 docker run --rm -it --volumes-from kopano_server -v "$BACKUP_DIR":/kopano/backup zokradonh/kopano_utils kopano-backup -O /kopano/backup/data
 
-"$SELF_DIR/restic" backup /kopano/data /kopano/config
+"$SELF_DIR/restic" backup /kopano/backup/config /kopano/backup/data
 "$SELF_DIR/restic" forget "$RESTIC_RETENTION"

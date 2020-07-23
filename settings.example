@@ -1,3 +1,6 @@
-KOPANO_DOCKER_DIR=/root/kopano-docker-restic-backup
+KOPANO_DOCKER_DIR=/root/kopano-docker
 BACKUP_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 RESTIC_RETENTION="--keep-hourly 16 --keep-daily 14 --keep-weekly 8 --keep-monthly 12 --keep-yearly 10"
+
+# This can be used to pass trough additional volumes for e.g. SSH
+#RESTIC_ADDITIONAL="-v /root/.ssh:/root/.ssh"
