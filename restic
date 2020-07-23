@@ -7,6 +7,6 @@ for dir in data config .cache; do
         mkdir "$BACKUP_DIR/$dir"
     fi
 done
-RESTIC_ADDITIONAL=${RESTIC_ADDITIONAL:""}
+RESTIC_ADDITIONAL=${RESTIC_ADDITIONAL: }
 
 docker run --rm --env-file "$BACKUP_DIR/restic.env" -v "$BACKUP_DIR/.cache":/root/.cache/restic -v "$BACKUP_DIR":/kopano/backup:ro $RESTIC_ADDITIONAL instrumentisto/restic $@
